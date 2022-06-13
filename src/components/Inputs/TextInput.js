@@ -1,16 +1,15 @@
-import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
-import { TextInput as Input } from 'react-native-paper'
-import { theme } from '../core/theme'
+import { StyleSheet, Text, View } from 'react-native';
+import { TextInput as Input } from 'react-native-paper';
+import { theme } from '../../core/theme';
 
-export default function TextInput({ errorText, description, ...props }) {
+export function TextInput({ errorText, description, ...props }) {
   return (
     <View style={styles.container}>
       <Input
         style={styles.input}
         theme={{ colors: { text: '#000000' } }}
         selectionColor={theme.colors.primary}
-        underlineColor="transparent"
+        underlineColor='transparent'
         {...props}
       />
       {description && !errorText ? (
@@ -18,7 +17,7 @@ export default function TextInput({ errorText, description, ...props }) {
       ) : null}
       {errorText ? <Text style={styles.error}>{errorText}</Text> : null}
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -39,4 +38,4 @@ const styles = StyleSheet.create({
     color: theme.colors.error,
     paddingTop: 8,
   },
-})
+});

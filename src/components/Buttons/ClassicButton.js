@@ -1,9 +1,8 @@
-import React from 'react'
-import { StyleSheet } from 'react-native'
-import { Button as PaperButton } from 'react-native-paper'
-import { theme } from '../core/theme'
+import { StyleSheet } from 'react-native';
+import { Button as PaperButton } from 'react-native-paper';
+import { theme } from '../../core/theme';
 
-export default function Button({ mode, style, ...props }) {
+export function ClassicButton({ mode, style, ...props }) {
   return (
     <PaperButton
       style={[
@@ -15,7 +14,7 @@ export default function Button({ mode, style, ...props }) {
       mode={mode}
       {...props}
     />
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -29,4 +28,4 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 26,
   },
-})
+});
