@@ -10,7 +10,7 @@ import {
   TextInput,
 } from '../../components';
 import { theme } from '../../core/theme';
-import { auth, userLogin } from '../../services/firebase';
+import { userLogin, getUser, auth } from '../../services/firebase';
 
 export function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');

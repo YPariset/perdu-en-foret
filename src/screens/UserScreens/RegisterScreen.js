@@ -10,29 +10,14 @@ import {
   TextInput,
 } from '../../components';
 import { theme } from '../../core/theme';
-import { auth } from '../../services/firebase';
+import { createUser } from '../../services/firebase';
 
 export function RegisterScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigation.replace('HomeScreen');
-      }
-    });
-  }, []);
-
-  const inscription = () => {
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredentials) => {
-        const user = userCredentials.user;
-        console.log('Inscrit en tant que ', user.email);
-      })
-      .catch((error) => alert(error.message));
-  };
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setlastName] = useState('');
+  const [tel, setTel] = useState('');
 
   return (
     <Background>
@@ -58,7 +43,7 @@ export function RegisterScreen({ navigation }) {
       />
       <ClassicButton
         mode='contained'
-        onPress={inscription}
+        onPress={() => createUser({lastName: lastName, firstName: firstName, tel: tel, email: email, password: password},  navigation)}
         style={{ marginTop: 24 }}
       >
         Sign Up

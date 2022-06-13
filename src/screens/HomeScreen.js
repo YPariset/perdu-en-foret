@@ -5,17 +5,10 @@ import {
   Logo,
   Paragraph,
 } from '.././components';
-import { auth } from '../services/firebase';
+import { logout } from '../services/firebase';
 
 export function HomeScreen({ navigation }) {
-  const logout = () => {
-    auth
-      .signOut()
-      .then(() => {
-        navigation.replace('StartScreen');
-      })
-      .catch((error) => alert(error.message));
-  };
+
   return (
     <Background>
       <Logo />
@@ -24,7 +17,7 @@ export function HomeScreen({ navigation }) {
         Your amazing app starts here. Open you favorite code editor and start
         editing this project.
       </Paragraph>
-      <ClassicButton mode='outlined' onPress={logout}>
+      <ClassicButton mode='outlined' onPress={()=>logout(navigation)}>
         Logout
       </ClassicButton>
     </Background>
