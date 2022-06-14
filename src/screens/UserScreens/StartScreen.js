@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import {
   Background,
   ClassicButton,
@@ -5,13 +7,22 @@ import {
   Logo,
   Paragraph,
 } from '../../components';
+import { auth } from '../../services/firebase';
 
 export function StartScreen({ navigation }) {
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigation.replace('HomeScreen');
+      }
+    });
+  }, []);
+
   return (
     <Background>
       <Logo />
-      <Header>Page principale</Header>
-      <Paragraph>On peut mettre la map ici.</Paragraph>
+      <Header>Page de connection</Header>
+      <Paragraph>Connection / Inscription</Paragraph>
       <ClassicButton
         mode='contained'
         onPress={() => navigation.navigate('LoginScreen')}
@@ -20,9 +31,15 @@ export function StartScreen({ navigation }) {
       </ClassicButton>
       <ClassicButton
         mode='outlined'
-        onPress={() => navigation.navigate('RegisterScreen')}
+        onPress={() => navigation.navigate('SignUpScreen')}
       >
         Sign Up
+      </ClassicButton>
+      <ClassicButton
+        mode='outlined'
+        onPress={() => navigation.navigate('HomeScreen')}
+      >
+        Continuer sans créer de compte
       </ClassicButton>
     </Background>
   );

@@ -5,9 +5,11 @@ import { theme } from './src/core/theme';
 
 import {
   HomeScreen,
+  ItineraryScreen,
   LoginScreen,
-  RegisterScreen,
   ResetPasswordScreen,
+  SettingsScreen,
+  SignUpScreen,
   StartScreen,
 } from './src/screens';
 
@@ -23,10 +25,12 @@ export default function App() {
             headerShown: false,
           }}
         >
+          <Stack.Screen name='ItineraryScreen' component={ItineraryScreen} />
           <Stack.Screen name='StartScreen' component={StartScreen} />
           <Stack.Screen name='LoginScreen' component={LoginScreen} />
-          <Stack.Screen name='RegisterScreen' component={RegisterScreen} />
+          <Stack.Screen name='SignUpScreen' component={SignUpScreen} />
           <Stack.Screen name='HomeScreen' component={HomeScreen} />
+          <Stack.Screen name='SettingsScreen' component={SettingsScreen} />
           <Stack.Screen
             name='ResetPasswordScreen'
             component={ResetPasswordScreen}

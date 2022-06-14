@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import {
@@ -10,19 +10,11 @@ import {
   TextInput,
 } from '../../components';
 import { theme } from '../../core/theme';
-import { userLogin, getUser, auth } from '../../services/firebase';
+import { userLogin } from '../../services/firebase';
 
 export function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigation.replace('HomeScreen');
-      }
-    });
-  }, []);
 
   return (
     <Background>
@@ -61,7 +53,7 @@ export function LoginScreen({ navigation }) {
       </ClassicButton>
       <View style={styles.row}>
         <Text>Don’t have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.replace('RegisterScreen')}>
+        <TouchableOpacity onPress={() => navigation.replace('SignUpScreen')}>
           <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
       </View>
