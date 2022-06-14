@@ -7,6 +7,7 @@ import {
   Paragraph,
 } from '.././components';
 import { getUser, logout } from '../services/firebase';
+import { ItineraryPlannedScreen } from './ItineraryPlannedScreen';
 
 export function HomeScreen({ navigation }) {
   const [user, setUser] = useState(undefined);
@@ -39,6 +40,7 @@ export function HomeScreen({ navigation }) {
           Login
         </ClassicButton>
       )}
+      <ItineraryPlannedScreen />
     </Background>
   );
 }
