@@ -8,6 +8,7 @@ import {
   ItineraryScreen,
   LoginScreen,
   ResetPasswordScreen,
+  SettingsScreen,
   SignUpScreen,
   StartScreen,
 } from './src/screens';
@@ -29,6 +30,7 @@ export default function App() {
           <Stack.Screen name='LoginScreen' component={LoginScreen} />
           <Stack.Screen name='SignUpScreen' component={SignUpScreen} />
           <Stack.Screen name='HomeScreen' component={HomeScreen} />
+          <Stack.Screen name='SettingsScreen' component={SettingsScreen} />
           <Stack.Screen
             name='ResetPasswordScreen'
             component={ResetPasswordScreen}

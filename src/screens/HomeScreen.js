@@ -1,11 +1,12 @@
+import { StyleSheet } from 'react-native';
 import {
   Background,
-  ClassicButton,
   Header,
   Logo,
+  OptionButton,
   Paragraph,
 } from '.././components';
-import { getUser, logout } from '../services/firebase';
+import { getUser } from '../services/firebase';
 import { ItineraryPlannedModal } from './ItineraryPlannedModal';
 
 export function HomeScreen({ navigation }) {
@@ -13,6 +14,7 @@ export function HomeScreen({ navigation }) {
 
   return (
     <Background>
+      <OptionButton navigation={navigation} />
       <Logo />
       <Header>Let’s start</Header>
       <Paragraph>
@@ -23,19 +25,13 @@ export function HomeScreen({ navigation }) {
         <>
           <Paragraph>{`Bonjour ${user?.lastName} vous êtes bien connecté.`}</Paragraph>
           <Paragraph>{user?.email}</Paragraph>
-          <ClassicButton mode='outlined' onPress={() => logout(navigation)}>
-            Logout
-          </ClassicButton>
         </>
       ) : (
-        <ClassicButton
-          mode='contained'
-          onPress={() => navigation.navigate('LoginScreen')}
-        >
-          Login
-        </ClassicButton>
+        <></>
       )}
       <ItineraryPlannedModal navigation={navigation} />
     </Background>
   );
 }
+
+const style = StyleSheet.create({});

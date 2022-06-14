@@ -18,7 +18,7 @@ export const colors = {
   darkGreen: '#2A4849',
   green: '#79B791',
   orange: '#F4A261',
-  grey: 'DDDDDD',
+  grey: '#DDDDDD',
 };
 
 export const general = {

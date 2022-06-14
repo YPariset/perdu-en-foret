@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import { BackButton, Background, Paragraph } from '../components';
+import { BackButton, Background, OptionButton, Paragraph } from '../components';
 import { colors, general } from '../core/theme';
 import { getUser } from '../services/firebase';
 export function ItineraryScreen({ navigation }) {
@@ -8,6 +8,7 @@ export function ItineraryScreen({ navigation }) {
   return (
     <Background>
       <BackButton goBack={navigation.goBack} />
+      <OptionButton />
       <Paragraph>Voici l'itineraire</Paragraph>
       <View style={style.modalClose}>
         <Paragraph>Coucou</Paragraph>

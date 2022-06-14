@@ -5,12 +5,12 @@ import {
 } from 'react-native';
 import { theme } from '../../core/theme';
 
-export function Background({ children }) {
+export function Background({ children, style }) {
   return (
     <ImageBackground
       source={require('../../../assets/background_dot.png')}
       resizeMode='repeat'
-      style={styles.background}
+      style={[styles.background, style]}
     >
       <KeyboardAvoidingView style={styles.container} behavior='padding'>
         {children}
