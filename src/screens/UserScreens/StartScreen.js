@@ -16,6 +16,7 @@ export function StartScreen({ navigation }) {
       }
     });
   }, []);
+
   return (
     <Background>
       <Logo />

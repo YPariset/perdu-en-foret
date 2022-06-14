@@ -1,14 +1,9 @@
-import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { BackButton, Background, Paragraph } from '../components';
 import { colors, general } from '../core/theme';
 import { getUser } from '../services/firebase';
 export function ItineraryScreen({ navigation }) {
-  const [user, setUser] = useState(undefined);
-
-  useEffect(() => {
-    setUser(getUser());
-  }, []);
+  const user = getUser();
 
   return (
     <Background>

@@ -1,5 +1,3 @@
-import { createStackNavigator } from '@react-navigation/stack';
-import { useEffect, useState } from 'react';
 import {
   Background,
   ClassicButton,
@@ -11,12 +9,7 @@ import { getUser, logout } from '../services/firebase';
 import { ItineraryPlannedModal } from './ItineraryPlannedModal';
 
 export function HomeScreen({ navigation }) {
-  const [user, setUser] = useState(undefined);
-  const Stack = createStackNavigator();
-
-  useEffect(() => {
-    setUser(getUser());
-  }, []);
+  const user = getUser();
 
   return (
     <Background>
