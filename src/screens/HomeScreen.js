@@ -1,3 +1,4 @@
+import { createStackNavigator } from '@react-navigation/stack';
 import { useEffect, useState } from 'react';
 import {
   Background,
@@ -7,10 +8,11 @@ import {
   Paragraph,
 } from '.././components';
 import { getUser, logout } from '../services/firebase';
-import { ItineraryPlannedScreen } from './ItineraryPlannedScreen';
+import { ItineraryPlannedModal } from './ItineraryPlannedModal';
 
 export function HomeScreen({ navigation }) {
   const [user, setUser] = useState(undefined);
+  const Stack = createStackNavigator();
 
   useEffect(() => {
     setUser(getUser());
@@ -40,7 +42,7 @@ export function HomeScreen({ navigation }) {
           Login
         </ClassicButton>
       )}
-      <ItineraryPlannedScreen />
+      <ItineraryPlannedModal navigation={navigation} />
     </Background>
   );
 }

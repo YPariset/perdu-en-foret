@@ -1,30 +1,23 @@
 import { useEffect, useState } from 'react';
-import { Pressable, StyleSheet } from 'react-native';
-import { PageModal, Paragraph } from '../components';
+import { StyleSheet, View } from 'react-native';
+import { BackButton, Background, Paragraph } from '../components';
 import { colors, general } from '../core/theme';
 import { getUser } from '../services/firebase';
-
-export function ItineraryPlannedScreen() {
+export function ItineraryScreen({ navigation }) {
   const [user, setUser] = useState(undefined);
-  const [modalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     setUser(getUser());
   }, []);
 
   return (
-    <>
-      <PageModal
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-      />
-      <Pressable
-        onPress={() => setModalVisible(true)}
-        style={[style.modalClose]}
-      >
+    <Background>
+      <BackButton goBack={navigation.goBack} />
+      <Paragraph>Voici l'itineraire</Paragraph>
+      <View style={style.modalClose}>
         <Paragraph>Coucou</Paragraph>
-      </Pressable>
-    </>
+      </View>
+    </Background>
   );
 }
 

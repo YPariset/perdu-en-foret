@@ -5,10 +5,27 @@ import {
   View,
 } from 'react-native';
 import { colors, general } from '../../core/theme';
+import { ClassicButton } from '../Buttons';
 import { Paragraph } from '../Typography';
 
 export function PageModal(props) {
-  const { setModalVisible, modalVisible } = props;
+  const { setModalVisible, modalVisible, navigation } = props;
+
+  const openItineraryScreen = () => {
+    setModalVisible(false);
+    navigation.navigate('ItineraryScreen');
+  };
+
+  const ModalContainer = () => {
+    return (
+      <View>
+        <Paragraph>Un Autre cooucou</Paragraph>
+        <ClassicButton onPress={openItineraryScreen}>
+          Voir l'initéraire
+        </ClassicButton>
+      </View>
+    );
+  };
 
   return (
     <Modal animationType='slide' transparent={true} visible={modalVisible}>
@@ -16,9 +33,7 @@ export function PageModal(props) {
         <View style={style.modalOverlay} />
       </TouchableWithoutFeedback>
       <View style={[style.modal]}>
-        <View style={style.container}>
-          <Paragraph>Un autre coucou</Paragraph>
-        </View>
+        <ModalContainer />
       </View>
     </Modal>
   );

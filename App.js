@@ -5,6 +5,7 @@ import { theme } from './src/core/theme';
 
 import {
   HomeScreen,
+  ItineraryScreen,
   LoginScreen,
   ResetPasswordScreen,
   SignUpScreen,
@@ -23,6 +24,7 @@ export default function App() {
             headerShown: false,
           }}
         >
+          <Stack.Screen name='ItineraryScreen' component={ItineraryScreen} />
           <Stack.Screen name='StartScreen' component={StartScreen} />
           <Stack.Screen name='LoginScreen' component={LoginScreen} />
           <Stack.Screen name='SignUpScreen' component={SignUpScreen} />
