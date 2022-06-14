@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   Background,
   ClassicButton,
@@ -5,9 +6,14 @@ import {
   Logo,
   Paragraph,
 } from '.././components';
-import { logout } from '../services/firebase';
+import { getUser, logout } from '../services/firebase';
 
 export function HomeScreen({ navigation }) {
+  const [user, setUser] = useState(undefined);
+
+  useEffect(() => {
+    setUser(getUser());
+  }, []);
 
   return (
     <Background>
@@ -17,9 +23,22 @@ export function HomeScreen({ navigation }) {
         Your amazing app starts here. Open you favorite code editor and start
         editing this project.
       </Paragraph>
-      <ClassicButton mode='outlined' onPress={()=>logout(navigation)}>
-        Logout
-      </ClassicButton>
+      {user ? (
+        <>
+          <Paragraph>{`Bonjour ${user?.lastName} vous êtes bien connecté.`}</Paragraph>
+          <Paragraph>{user?.email}</Paragraph>
+          <ClassicButton mode='outlined' onPress={() => logout(navigation)}>
+            Logout
+          </ClassicButton>
+        </>
+      ) : (
+        <ClassicButton
+          mode='contained'
+          onPress={() => navigation.navigate('LoginScreen')}
+        >
+          Login
+        </ClassicButton>
+      )}
     </Background>
   );
 }
