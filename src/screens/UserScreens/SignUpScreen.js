@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import {
@@ -12,7 +12,7 @@ import {
 import { theme } from '../../core/theme';
 import { createUser } from '../../services/firebase';
 
-export function RegisterScreen({ navigation }) {
+export function SignUpScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -43,7 +43,18 @@ export function RegisterScreen({ navigation }) {
       />
       <ClassicButton
         mode='contained'
-        onPress={() => createUser({lastName: lastName, firstName: firstName, tel: tel, email: email, password: password},  navigation)}
+        onPress={() =>
+          createUser(
+            {
+              lastName: lastName,
+              firstName: firstName,
+              tel: tel,
+              email: email,
+              password: password,
+            },
+            navigation
+          )
+        }
         style={{ marginTop: 24 }}
       >
         Sign Up

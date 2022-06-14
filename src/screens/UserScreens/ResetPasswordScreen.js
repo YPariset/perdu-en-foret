@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { emailValidator } from '../../helpers/emailValidator';
 
 import {
   BackButton,
@@ -8,17 +7,10 @@ import {
   Header,
   Logo,
 } from '../../components';
+import { resetPasswordEmail } from '../../services/firebase';
 
 export function ResetPasswordScreen({ navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' });
-
-  const sendResetPasswordEmail = () => {
-    const emailError = emailValidator(email.value);
-    if (emailError) {
-      setEmail({ ...email, error: emailError });
-    }
-    navigation.navigate('LoginScreen');
-  };
 
   return (
     <Background>
@@ -40,7 +32,7 @@ export function ResetPasswordScreen({ navigation }) {
       />
       <ClassicButton
         mode='contained'
-        onPress={sendResetPasswordEmail}
+        onPress={() => resetPasswordEmail(navigation)}
         style={{ marginTop: 16 }}
       >
         Send Instructions
