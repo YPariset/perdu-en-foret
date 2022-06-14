@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Modal,
   Pressable,
@@ -11,8 +11,12 @@ import { colors, general } from '../core/theme';
 import { getUser } from '../services/firebase';
 
 export function ItineraryPlannedModal({ navigation }) {
-  const user = getUser();
+  const [user, setUser] = useState(undefined);
   const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    setUser(getUser());
+  }, []);
 
   const openItineraryScreen = () => {
     setModalVisible(false);

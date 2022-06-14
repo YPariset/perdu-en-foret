@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import {
   Background,
@@ -10,7 +11,10 @@ import { getUser } from '../services/firebase';
 import { ItineraryPlannedModal } from './ItineraryPlannedModal';
 
 export function HomeScreen({ navigation }) {
-  const user = getUser();
+  const [user, setUser] = useState(undefined);
+  useEffect(() => {
+    setUser(getUser());
+  }, []);
 
   return (
     <Background>

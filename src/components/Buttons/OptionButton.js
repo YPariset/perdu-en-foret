@@ -1,18 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { getUser, logout } from '../../services/firebase';
-
 import { colors } from '../../core/theme';
+import { getUser, logout } from '../../services/firebase';
 
 export function OptionButton({ navigation }) {
   const [optionOpen, setOptionOpen] = useState(false);
-  const user = getUser();
+  const [user, setUser] = useState(undefined);
+
+  useEffect(() => {
+    setUser(getUser());
+  }, []);
 
   const renderOptions = () => {
-    if (optionOpen && user) {
-      return (
+    if (optionOpen) {
+      return user ? (
         <>
           <Pressable
             onPress={() => navigation.navigate('SettingsScreen')}
@@ -36,13 +39,11 @@ export function OptionButton({ navigation }) {
             <Ionicons name={'log-out'} size={20} color={colors.darkGreen} />
           </Pressable>
         </>
-      );
-    } else if (optionOpen && !user) {
-      return (
+      ) : (
         <>
           <Pressable style={[style.buttonRounded, style.smallButton]}>
             <Ionicons name={'print'} size={20} color={colors.darkGreen} />
-          </Pressable>{' '}
+          </Pressable>
           <Pressable
             onPress={() => navigation.navigate('LoginScreen')}
             style={[style.buttonRounded, style.smallButton]}
