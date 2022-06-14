@@ -5,22 +5,28 @@ import {
   View,
 } from 'react-native';
 import { colors, general } from '../../core/theme';
+import { Paragraph } from '../Typography';
 
 export function PageModal(props) {
-  const { children, setModalVisible, modalVisible } = props;
+  const { setModalVisible, modalVisible } = props;
 
   return (
     <Modal animationType='slide' transparent={true} visible={modalVisible}>
       <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
         <View style={style.modalOverlay} />
       </TouchableWithoutFeedback>
-      <View style={[style.container]}>{children}</View>
+      <View style={[style.modal]}>
+        <View style={style.container}>
+          <Paragraph>Un autre coucou</Paragraph>
+        </View>
+      </View>
     </Modal>
   );
 }
 
 const style = StyleSheet.create({
-  container: {
+  container: {},
+  modal: {
     position: 'absolute',
     top: '20%',
     width: '100%',

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 import { PageModal, Paragraph } from '../components';
 import { colors, general } from '../core/theme';
 import { getUser } from '../services/firebase';
@@ -14,23 +14,21 @@ export function ItineraryPlannedScreen() {
 
   return (
     <>
-      <PageModal modalVisible={modalVisible} setModalVisible={setModalVisible}>
-        <View style={style.container}>
-          <Paragraph>Un autre oucou</Paragraph>
-        </View>
-      </PageModal>
+      <PageModal
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
+      />
       <Pressable
         onPress={() => setModalVisible(true)}
         style={[style.modalClose]}
       >
-        <Paragraph>Coucou </Paragraph>
+        <Paragraph>Coucou</Paragraph>
       </Pressable>
     </>
   );
 }
 
 const style = StyleSheet.create({
-  container: {},
   modalClose: {
     position: 'absolute',
     bottom: 0,
