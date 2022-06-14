@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { StyleSheet } from 'react-native';
 
 import {
   Background,
@@ -44,3 +45,5 @@ export function StartScreen({ navigation }) {
     </Background>
   );
 }
+
+const style = StyleSheet.create({});
