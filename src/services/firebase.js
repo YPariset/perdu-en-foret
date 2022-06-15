@@ -81,7 +81,7 @@ const resetPasswordEmail = (navigation) => {
   if (emailError) {
     setEmail({ ...email, error: emailError });
   }
-  navigation.navigate('LoginScreen');
+  navigation.navigate('StartScreen');
 };
 
 export { auth, createUser, userLogin, getUser, logout, resetPasswordEmail };

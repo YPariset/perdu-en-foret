@@ -6,7 +6,7 @@ export const theme = {
   colors: {
     ...DefaultTheme.colors,
     text: '#000000',
-    primary: '#560CCE',
+    primary: '#2A4849',
     secondary: '#414757',
     error: '#f13a59',
   },
@@ -19,6 +19,8 @@ export const colors = {
   green: '#79B791',
   orange: '#F4A261',
   grey: '#DDDDDD',
+  grey2: '#bec6cf',
+  grey3: '#86939e'
 };
 
 export const general = {

@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
+import { colors } from 'react-native-elements';
 import { TextInput as Input } from 'react-native-paper';
 import { theme } from '../../core/theme';
 
@@ -8,7 +9,7 @@ export function TextInput({ errorText, description, ...props }) {
       <Input
         style={styles.input}
         theme={{ colors: { text: '#000000' } }}
-        selectionColor={theme.colors.primary}
+        selectionColor={colors.darkGreen}
         underlineColor='transparent'
         {...props}
       />
@@ -26,11 +27,13 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   input: {
-    backgroundColor: theme.colors.surface,
+    backgroundColor: colors.white,
+    borderWidth: 1,
+    borderColor: colors.grey4
   },
   description: {
     fontSize: 13,
-    color: theme.colors.primary,
+    color: colors.white,
     paddingTop: 8,
   },
   error: {
