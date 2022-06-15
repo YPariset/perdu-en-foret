@@ -45,7 +45,7 @@ export function OptionButton({ navigation }) {
             <Ionicons name={'print'} size={20} color={colors.darkGreen} />
           </Pressable>
           <Pressable
-            onPress={() => navigation.navigate('LoginScreen')}
+            onPress={() => navigation.navigate('StartScreen')}
             style={[style.buttonRounded, style.smallButton]}
           >
             <Ionicons name={'log-in'} size={20} color={colors.darkGreen} />

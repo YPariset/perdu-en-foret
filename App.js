@@ -1,15 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Provider } from 'react-native-paper';
 import { theme } from './src/core/theme';
-
-import { Paragraph } from './src/components';
 import {
   HomeScreen,
   ItineraryScreen,
-  LoginScreen,
   ResetPasswordScreen,
   SettingsScreen,
   SignUpScreen,
@@ -28,7 +25,7 @@ export default function App() {
     <Provider theme={theme}>
       {isSplashScreenVisible ? (
         <View style={style.splashScreenContainer}>
-          <Paragraph>Ceci est le splashScreen</Paragraph>
+          <Image style={{ width: 300, height: 300}} source={{uri: 'https://docs.ypariset.fr/img/logo-pef.png'}}></Image>
         </View>
       ) : (
         <></>
@@ -43,7 +40,6 @@ export default function App() {
         >
           <Stack.Screen name='ItineraryScreen' component={ItineraryScreen} />
           <Stack.Screen name='StartScreen' component={StartScreen} />
-          <Stack.Screen name='LoginScreen' component={LoginScreen} />
           <Stack.Screen name='SignUpScreen' component={SignUpScreen} />
           <Stack.Screen name='HomeScreen' component={HomeScreen} />
           <Stack.Screen name='SettingsScreen' component={SettingsScreen} />
@@ -64,5 +60,7 @@ const style = StyleSheet.create({
     position: 'absolute',
     backgroundColor: 'white',
     zIndex: 100000,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
