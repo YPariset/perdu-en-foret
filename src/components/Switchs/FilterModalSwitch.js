@@ -2,6 +2,12 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../core/theme';
 
+// Utilisation;
+// <FilterModalSwitch
+//   onPress={onToggleFilterPress}
+//   isFavorySelected={isFavorySelected}
+//   style={{ marginRight: 5 }}
+// />;
 export function FilterModalSwitch({ style, isFavorySelected, onPress }) {
   return (
     <View style={[styles.container, style]}>
