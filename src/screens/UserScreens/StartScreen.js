@@ -7,6 +7,7 @@ import {
   Header,
   Logo,
   Paragraph,
+  SubmitButton,
 } from '../../components';
 import { auth } from '../../services/firebase';
 
@@ -42,6 +43,7 @@ export function StartScreen({ navigation }) {
       >
         Continuer sans créer de compte
       </ClassicButton>
+      <SubmitButton orange style={{ paddingVertical: 40 }} />
     </Background>
   );
 }
