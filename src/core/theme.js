@@ -20,7 +20,9 @@ export const colors = {
   orange: '#F4A261',
   grey: '#DDDDDD',
   grey2: '#bec6cf',
-  grey3: '#86939e'
+  grey3: '#86939e',
+  mediumGreen: 'rgba(250,250,250,0.10)',
+  lightGreen: 'rgba(250,250,250,0.35)',
 };
 
 export const general = {
