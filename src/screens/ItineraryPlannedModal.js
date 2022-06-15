@@ -1,18 +1,33 @@
+import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 import {
+  Keyboard,
   Modal,
   Pressable,
+  ScrollView,
   StyleSheet,
+  TextInput,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { ClassicButton, Paragraph } from '../components';
+import { LatLngInput } from '../components/Inputs/LatLngInput';
 import { colors, general } from '../core/theme';
 import { getUser } from '../services/firebase';
+import { SwitchArrowIcon } from '../components/Icons/SwitchArrowIcon';
 
 export function ItineraryPlannedModal({ navigation }) {
   const [user, setUser] = useState(undefined);
   const [modalVisible, setModalVisible] = useState(false);
+  const [geoPoints, setGeoPoints] = useState([
+    {
+      lat: '48,2501',
+      lng: '2,1089'
+    },
+    {
+      lat: '2',
+      lng: null
+    }
+  ]);
 
   useEffect(() => {
     setUser(getUser());
@@ -23,18 +38,39 @@ export function ItineraryPlannedModal({ navigation }) {
     navigation.navigate('ItineraryScreen');
   };
 
-  const ModalOpenContainer = () => (
-    <View style={[style.modalOpenContainer]}>
-      <Paragraph>Un Autre cooucou</Paragraph>
-      <ClassicButton onPress={openItineraryScreen}>
+  const ModalOpenContainer = () => {
+    return (
+      <ScrollView
+        style={[style.modalOpenContainer]}
+        keyboardDismissMode={'on-drag'}
+      >
+        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+          <View style={{ flex: 1, marginRight: 10 }}>
+            {geoPoints.map((point, i) => {
+              const isLast = i === geoPoints.length - 1;
+              return (
+                <LatLngInput
+                  lat={point.lat}
+                  lng={point.lng}
+                  isLast={isLast}
+                  style={{ marginBottom: isLast ? 0 : 10 }}
+                />
+              )
+            })}
+          </View>
+          <View style={{ width: 17 }}>
+            <SwitchArrowIcon color='#fff' />
+          </View>
+        </View>
+        {/* <ClassicButton onPress={openItineraryScreen}>
         Voir l'initéraire
-      </ClassicButton>
-    </View>
-  );
+      </ClassicButton> */}
+      </ScrollView>
+    )
+  };
 
   const ModalCloseContainer = () => (
     <View style={[style.modalColseContainer]}>
-      <Paragraph>Coucou</Paragraph>
     </View>
   );
 
@@ -63,10 +99,11 @@ const style = StyleSheet.create({
   modalColseContainer: {},
   modalOpenBackground: {
     position: 'absolute',
-    top: '20%',
+    top: '40%',
     width: '100%',
-    height: '100%',
     bottom: 0,
+    paddingHorizontal: 16,
+    paddingTop: 16,
     backgroundColor: colors.darkGreen,
     borderTopLeftRadius: general.bigBorderRadius,
     borderTopRightRadius: general.bigBorderRadius,

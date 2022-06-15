@@ -19,6 +19,8 @@ export const colors = {
   green: '#79B791',
   orange: '#F4A261',
   grey: '#DDDDDD',
+  disabledText: '#666666',
+  black: '#222222'
 };
 
 export const general = {
