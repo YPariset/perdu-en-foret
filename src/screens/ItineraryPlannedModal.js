@@ -1,19 +1,15 @@
-import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 import {
-  Keyboard,
   Modal,
   Pressable,
   ScrollView,
   StyleSheet,
-  TextInput,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { LatLngInput } from '../components/Inputs/LatLngInput';
+import { LatLngInput, SwitchArrowIcon } from '../components';
 import { colors, general } from '../core/theme';
 import { getUser } from '../services/firebase';
-import { SwitchArrowIcon } from '../components/Icons/SwitchArrowIcon';
 
 export function ItineraryPlannedModal({ navigation }) {
   const [user, setUser] = useState(undefined);
@@ -21,12 +17,12 @@ export function ItineraryPlannedModal({ navigation }) {
   const [geoPoints, setGeoPoints] = useState([
     {
       lat: '48,2501',
-      lng: '2,1089'
+      lng: '2,1089',
     },
     {
       lat: '2',
-      lng: null
-    }
+      lng: '',
+    },
   ]);
 
   useEffect(() => {
@@ -44,18 +40,25 @@ export function ItineraryPlannedModal({ navigation }) {
         style={[style.modalOpenContainer]}
         keyboardDismissMode={'on-drag'}
       >
-        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
           <View style={{ flex: 1, marginRight: 10 }}>
             {geoPoints.map((point, i) => {
               const isLast = i === geoPoints.length - 1;
               return (
                 <LatLngInput
+                  key={i}
                   lat={point.lat}
                   lng={point.lng}
                   isLast={isLast}
                   style={{ marginBottom: isLast ? 0 : 10 }}
                 />
-              )
+              );
             })}
           </View>
           <View style={{ width: 17 }}>
@@ -66,12 +69,11 @@ export function ItineraryPlannedModal({ navigation }) {
         Voir l'initéraire
       </ClassicButton> */}
       </ScrollView>
-    )
+    );
   };
 
   const ModalCloseContainer = () => (
-    <View style={[style.modalColseContainer]}>
-    </View>
+    <View style={[style.modalColseContainer]}></View>
   );
 
   return (
